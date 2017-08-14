@@ -3,30 +3,93 @@
   "scripts": {
     "start": "roadhog server",
     "build": "roadhog build",
+    "tslint": "tslint -p tsconfig.json -c tslint.json -e node_modules",
+    "test": "jest",
+    "tcm": "tcm -p src/**/*.less -w",
     "lint": "eslint --ext .js src test",
     "precommit": "npm run lint"
   },
   "engines": {
     "install-node": "6.9.2"
   },
-  "dependencies": {
+  "jest": {
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+      "setupFiles": [
+      "./jest-setup.js"
+    ],
+      "moduleDirectories": [
+      "node_modules"
+    ],
+      "transform": {
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "/src/.*\\.spec\\.(ts|tsx|js)$",
+      "globals": {
+      "__TS_CONFIG__": {
+        "module": "commonjs",
+          "jsx": "react"
+      }
+    },
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+        "\\.(css|less)$": "identity-obj-proxy"
+    }
+  },
+    "dependencies": {
+    "antd": "^2.12.6",
     "babel-runtime": "^6.9.2",
     "dva": "^1.2.1",
     "react": "^15.4.0",
     "react-dom": "^15.4.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^2.8.5",
+    "@types/jest": "^20.0.6",
+    "@types/node": "^8.0.20",
+    "@types/react": "^16.0.2",
+    "@types/react-addons-test-utils": "^0.14.19",
+    "@types/react-redux": "^5.0.1",
+    "@types/react-router": "^4.0.14",
+    "awesome-typescript-loader": "^3.2.2",
     "babel-eslint": "^7.1.1",
     "babel-plugin-dva-hmr": "^0.3.2",
     "babel-plugin-transform-runtime": "^6.9.0",
+    "del": "^3.0.0",
+    "enzyme": "^2.9.1",
     "eslint": "^3.12.2",
     "eslint-config-airbnb": "^13.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
     "expect": "^1.20.2",
+    "gulp": "^3.9.1",
+    "gulp-bump": "^2.7.0",
+    "gulp-git": "^2.4.2",
+    "gulp-if": "^2.0.2",
+    "gulp-imagemin": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-tsc": "^1.3.2",
+    "gulp-typescript": "^3.2.1",
+    "gulp-util": "^3.0.8",
     "husky": "^0.12.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^20.0.4",
+    "mockjs": "^1.0.1-beta3",
+    "react-addons-test-utils": "^15.6.0",
     "redbox-react": "^1.3.2",
-    "roadhog": "^0.5.2"
+    "redux-mock-store": "^1.2.3",
+    "roadhog": "^0.5.2",
+    "run-sequence": "^2.1.0",
+    "ts-jest": "^20.0.10",
+    "tslint": "^5.6.0",
+    "tslint-eslint-rules": "^4.1.1",
+    "tslint-react": "^3.2.0",
+    "typed-css-modules": "^0.3.0",
+    "typescript": "^2.4.2"
   }
 }

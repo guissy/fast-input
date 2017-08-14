@@ -1,17 +1,18 @@
 import fetch from 'dva/fetch';
 
-function parseJSON(response) {
+function parseJSON(response: Response) {
   return response.json();
 }
 
-function checkStatus(response) {
+function checkStatus(response: any): any {
   if (response.status >= 200 && response.status < 300) {
     return response;
   }
 
-  const error = new Error(response.statusText);
+  const error: any = new Error(response.statusText);
   error.response = response;
-  throw error;
+  // throw error;
+  return Promise.reject(error);
 }
 
 /**
@@ -21,10 +22,10 @@ function checkStatus(response) {
  * @param  {object} [options] The options we want to pass to "fetch"
  * @return {object}           An object containing either "data" or "err"
  */
-export default function request(url, options) {
+export default function request(url: string, options?:{method?: string;}) {
   return fetch(url, options)
     .then(checkStatus)
     .then(parseJSON)
-    .then(data => ({ data }))
-    .catch(err => ({ err }));
+    .then((data: any) => ({ data }))
+    .catch((err: any) => ({ err }));
 }

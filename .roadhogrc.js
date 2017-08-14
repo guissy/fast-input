@@ -1,10 +1,10 @@
-{
-  "entry": "src/index.js",
+export default {
+  "entry": "src/index.ts",
   "env": {
     "development": {
       "extraBabelPlugins": [
         "dva-hmr",
-        "transform-runtime"
+        "transform-runtime",  ["import", { "libraryName": "antd", "libraryDirectory": "lib", "style": true }]
       ]
     },
     "production": {

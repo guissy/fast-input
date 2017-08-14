@@ -1,0 +1,39 @@
+{
+  "transpileOnly": true,
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "target": "es5",
+    "lib": ["dom","es6","ES2016.Array.Include","dom.iterable","scripthost","es2017.object"],
+    "allowJs": false,
+    "traceResolution": false,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "strictNullChecks": false,
+    "jsx": "react",
+    "skipDefaultLibCheck": true,
+    "types": [
+      // add node as an option
+      "node"
+   ],
+   // typeRoots option has been previously configured
+   "typeRoots": [
+      // add path to @types
+      "node_modules/@types"
+   ]
+  },
+  "include": [
+    "typings/dva.d.ts",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ],
+  "exclude": [
+    "./src/**/*.spec.tsx",
+    "./src/**/*.spec.ts",
+    "node_modules"
+  ]
+}
