@@ -1,29 +1,42 @@
+.siteTable {
+  margin-bottom: 10px;
+  .ant-table-small .ant-table-tbody > tr > td {
+    padding: 4px 6px;
+    text-align: left;
+    .ant-form-item {
+      margin-bottom: 0;
+    }
+    &:not(:first-child) {
+      padding: 0;
+    }
+  }
+  .ant-table-small .ant-table-tbody > tr {
+    height: 42px;
+    overflow: visible;
+  }
+  .ant-form-item-control.has-error {
+    height: 32px;
+    margin-top: -12px;
+  }
+  .ant-form-explain {
+    margin-top: -8px;
+  }
+  .has-error .ant-form-explain,
+  .has-error .ant-form-split {
+    color: #f04134;
+  }
+  .has-error.has-feedback:after {
+    content: "\E62E";
+    color: #f04134;
+  }
+}
 
-.normal {
-  font-family: Georgia, sans-serif;
-  margin-top: 3em;
+.btns {
   text-align: center;
 }
 
-.title {
-  font-size: 2.5rem;
-  font-weight: normal;
-  letter-spacing: -1px;
-}
-
-.welcome {
-  height: 328px;
-  background: url(../../assets/yay.jpg) no-repeat center 0;
-  background-size: 388px 328px;
-}
-
-.list {
-  font-size: 1.2em;
-  margin-top: 1.8em;
-  list-style: none;
-  line-height: 1.5em;
-}
-
-.list code {
-  background: #f7f7f7;
+.inputAddon {
+  .ant-input-group-wrapper {
+    width: 100%;
+  }
 }

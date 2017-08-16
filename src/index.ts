@@ -10,7 +10,7 @@ const app = dva({history: browserHistory});
 // app.use({});
 
 // 3. Model
-// app.model(require('./models/example'));
+app.model(require('./pages/index/IndexPage.model').default);
 
 // 4. Router
 app.router(router);

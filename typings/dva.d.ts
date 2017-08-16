@@ -20,14 +20,11 @@ declare global {
     export type HistoryBase = any;
     export type ParseQueryString = any;
   }
-  export interface ReduxProps {
-    dispatch?: (action: Action) => void;
-  }
-}
-
-declare module 'redux' {
-  interface AnyAction {
+  export interface Action {
     type: any;
     payload?: any;
+  }
+  export interface ReduxProps {
+    dispatch?: (action: Action) => void;
   }
 }

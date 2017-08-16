@@ -136,7 +136,7 @@ gulp.task('roadhogrc', () => {
 });
 
 gulp.task('webpack.config.dev', () => {
-  return gulp.src('node_modules/roadhog/lib/config/webpack.config.dev.js')
+  return gulp.src('./node_modules/roadhog/lib/config/webpack.config.{dev,prod}.js')
     .pipe(through2.obj((file, enc, cb) => {
       let content = file.contents.toString();
       const source0 = '\'tsx\',';
@@ -151,12 +151,22 @@ gulp.task('webpack.config.dev', () => {
         loader: 'awesome-typescript?configFileName=tsconfig.json'
       }, {
         test: /\\.(js|jsx)$/,`;
-      if (!content.includes('awesome-typescript'))content = content.replace(source2, target2);
+      if (!content.includes('awesome-typescript')) content = content.replace(source2, target2);
+      const source31 = 'loader: \'style!\' + cssLoaders.own.join(\'!\')';
+      const target31 = 'loader: \'style!\' + cssLoaders.own.join(\'!\') +' +
+        ' \'!\'+paths.appDirectory+\'/build/css/antd-css-loader.js\'';
+      const source32 = 'cssLoaders.own.join(\'!\') + \'!less?{"modifyVars":\' + theme + \'}\'';
+      const target32 = 'cssLoaders.own.join(\'!\') + \'!less!\'+paths.appDirectory+\'/build/css/antd-css-loader.js\'';
+      if (!content.includes('antd-css-loader')) {
+        content = content.split(source31).join(target31);
+        content = content.split(source32).join(target32);
+      }
+
 // eslint-disable-next-line no-param-reassign
       file.contents = new Buffer(content);
       cb(null, file);
     }))
-    .pipe(gulp.dest('node_modules/roadhog/lib/config/'));
+    .pipe(gulp.dest('./node_modules/roadhog/lib/config/'));
 });
 
 

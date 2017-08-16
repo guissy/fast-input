@@ -1,6 +1,13 @@
 'use strict';
-
-const mock = {};
+const port = process.env.PORT || 8000;
+const target = "http://localhost:"+port;
+const getPath = (p)=>({target, pathRewrite: {[`^${p}`]: ""}});
+const mock = {
+  "/assets": { target },
+  "/master": getPath("/master"),
+  "/account": getPath("/account"),
+  "/cash": getPath("/cash"),
+};
 require('fs')
   .readdirSync(require('path').join(__dirname + '/mock'))
   .filter(file=>file.endsWith('.js'))
