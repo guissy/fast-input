@@ -114,7 +114,7 @@ export default class IndexPage extends React.PureComponent<IndexPageProps, any> 
     if (host) {
       this.hostWidths = Array.from(host.querySelectorAll('tbody>tr:nth-child(1)>td')).slice(1).map((v: HTMLElement) => {
         v.style.width = v.clientWidth + 'px';
-        return v.clientWidth;
+        return v.clientWidth - 15;
       });
     }
   }
