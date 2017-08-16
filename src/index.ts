@@ -1,4 +1,6 @@
 import dva from 'dva';
+import './index.html';
+import './antd.less';
 import './index.less';
 import {browserHistory} from 'dva/router';
 import router from './router';
