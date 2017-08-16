@@ -7,6 +7,7 @@ function RouterConfig({ history }: any) {
     <Router history={history}>
       <Route path="/" component={IndexPage} />
       <Route path="/fast-input/public/" component={IndexPage} />
+      <Route path="/fast-input/public/**" component={IndexPage} />
     </Router>
   );
 }
