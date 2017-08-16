@@ -6,6 +6,7 @@ function RouterConfig({ history }: any) {
   return (
     <Router history={history}>
       <Route path="/" component={IndexPage} />
+      <Route path="*" component={IndexPage} />
     </Router>
   );
 }
